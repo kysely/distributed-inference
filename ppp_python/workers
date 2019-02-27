@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Might need to install GNU Parallel (brew install parallel)
+
+NO_OF_WORKERS=2
+
+if [ "$1" != "" ]; then
+    NO_OF_WORKERS=$1
+    echo "Spawning ${1} workers..."
+fi
+
+seq 1 $NO_OF_WORKERS | parallel -u python3 worker.py >&2
