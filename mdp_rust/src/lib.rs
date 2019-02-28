@@ -8,7 +8,7 @@ use rand::prelude::*;
 use std::collections::{HashMap, VecDeque};
 use std::time::{Duration, Instant};
 
-pub const PROTOCOL: &[u8] = b"DI01";
+pub const PROTOCOL: &[u8] = b"MD01";
 pub const HEADER_DELIMITER: u8 = b'\n';
 pub const REQUEST: &[u8] = b"\x01";
 pub const REPLY: &[u8] = b"\x02";
