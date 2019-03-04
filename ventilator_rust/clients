@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Might need to install GNU Parallel (brew install parallel)
+
+clear;
+
+NO_OF_CLIENTS=2
+
+if [ "$1" != "" ]; then
+    NO_OF_CLIENTS=$1
+    echo "Spawning ${1} clients..."
+fi
+
+seq 1 $NO_OF_CLIENTS | parallel -u cargo run --example client >&2
