@@ -1,8 +1,11 @@
-# Ventilator
+# Ventilator (Rust & C broker)
 
 ```sh
 RUST_LOG=info cargo run --example client
-RUST_LOG=info cargo run --example broker
+
+RUST_LOG=info cargo run --example broker # Rust version
+make broker && ./target/broker # C version
+
 RUST_LOG=info cargo run --example worker
 ```
 

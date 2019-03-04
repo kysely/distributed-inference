@@ -3,7 +3,8 @@ extern crate log;
 extern crate pretty_env_logger;
 extern crate ventilator;
 
-use std::time::Instant;
+use std::time::{Instant, Duration};
+use std::thread;
 use ventilator::VentilatorClient;
 
 fn main() {
@@ -12,7 +13,8 @@ fn main() {
     let client = VentilatorClient::connect("tcp://localhost:5554", "tcp://localhost:5557")
         .expect("Couldn't connect to the broker");
 
-    let count = 200_000;
+    let count = 1_000_000;
+    thread::sleep(Duration::from_secs(2)); // wait to register client
 
     let start = Instant::now();
     let mut i = 0;
