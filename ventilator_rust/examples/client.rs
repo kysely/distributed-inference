@@ -1,10 +1,10 @@
 #[macro_use]
 extern crate log;
-extern crate ventilator;
 extern crate pretty_env_logger;
+extern crate ventilator;
 
-use ventilator::VentilatorClient;
 use std::time::Instant;
+use ventilator::VentilatorClient;
 
 fn main() {
     pretty_env_logger::init_timed();
@@ -35,5 +35,6 @@ fn main() {
         "Sending out and receiving {:?} messages took {:?}.{:?}s",
         count,
         duration.as_secs(),
-        duration.subsec_millis())
+        duration.subsec_millis()
+    )
 }
