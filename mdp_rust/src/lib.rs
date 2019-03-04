@@ -71,7 +71,7 @@ impl MajordomoClient {
     fn connect_to_broker(&mut self) -> Result<(), zmq::Error> {
         self.socket = self.ctx.socket(zmq::DEALER)?;
         self.socket.set_linger(0)?;
-        self.socket.set_sndhwm(10000)?;
+        self.socket.set_sndhwm(100000)?;
         self.socket.connect(&self.broker_url)?;
         info!("New socket to broker at {:?}", self.broker_url);
         Ok(())
@@ -144,7 +144,7 @@ impl MajordomoWorker {
     fn connect_to_broker(&mut self) -> Result<(), zmq::Error> {
         self.socket = self.ctx.socket(zmq::DEALER)?;
         self.socket.set_linger(0)?;
-        self.socket.set_sndhwm(2)?; // 2 so that at least READY and PING can go through
+        self.socket.set_sndhwm(100000)?;
         self.socket.connect(&self.broker_url)?;
 
         self.connects += 1;
@@ -303,8 +303,8 @@ impl MajordomoBroker {
     fn bind(&self) -> Result<(), zmq::Error> {
         self.socket.set_linger(0)?;
         self.socket.bind(&self.url)?;
-        self.socket.set_rcvhwm(1000)?;
-        self.socket.set_sndhwm(10000)?;
+        self.socket.set_rcvhwm(100000)?;
+        self.socket.set_sndhwm(100000)?;
         info!("Broker active at {:?}", &self.url);
         Ok(())
     }
