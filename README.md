@@ -1,7 +1,6 @@
 # Distributed Inference
 
-Slow :( The broker is the biggest bottleneck in all patterns. It might
-be useful to try writing it in C/C++, using vanilla ZMQ, without bindings.
+Slower than expected :(
 
 Performance for sending and receiving X messages using 1 client, 1 broker
 and 2 workers, written in Rust:
