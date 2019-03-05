@@ -15,6 +15,9 @@ RUST_LOG=info ./clients 2
 RUST_LOG=info ./workers 2
 ```
 
+The Rust compilation is set to optimize heavily and thus takes ~1min to compile.
+If you need to compile quickly, set `opt-level` in `Cargo.toml` to `0`.
+
 ---
 
 ![Topology](topology.png)
