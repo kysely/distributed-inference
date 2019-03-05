@@ -69,6 +69,7 @@ int main (void) {
     zmq_setsockopt (pusher, ZMQ_SNDHWM, &hwm, sizeof hwm);
     zmq_bind (pusher, "tcp://*:5555");
 
+    // THREAD: workers -> clients
     pthread_t thread_id; 
     pthread_create(&thread_id, NULL, workersToClients, NULL); 
 
